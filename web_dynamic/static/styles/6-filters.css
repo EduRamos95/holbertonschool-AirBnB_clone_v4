@@ -68,6 +68,11 @@ button:hover {
     width: 0px;
 }
 
+.amenities .popover li input{
+    position: relative;
+    right: 10px;
+}
+
 .amenities .popover {
     padding: 10px 0;
     margin-left: -5px;
