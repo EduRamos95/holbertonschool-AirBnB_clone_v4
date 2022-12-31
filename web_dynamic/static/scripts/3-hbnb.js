@@ -5,7 +5,7 @@ $(document).ready(function () {
   //*** catch a element when change status ***/
   $('.popover li input[type="checkbox"]').change(function () {
     let name = $(this).attr('data-name');
-    checkDictAmenities[`$name`] 
+    checkDictAmenities[`$name`]
     if ($(this).is(':checked')) {
       checkList.push(name);
       checkDictAmenities[$(this).data('id')] = $(this).data('name');
@@ -36,7 +36,6 @@ $(document).ready(function () {
       $('#api_status').removeClass('available');
     });
   }
-
   reloadApi();
   /*** ReloadApi without refresh page ***/
   $('DIV#api_status').click(function() {
@@ -79,39 +78,4 @@ $(document).ready(function () {
     },
     dataType: 'json'
   }).always(reloadApi());
-
-
-
-
-  $('button').click(function(){
-    /*$.ajax({
-      type: 'POST',
-      url: 'http://127.0.0.1:5001/api/v1/places_search/',
-      data: '{}',
-      contentType: 'application/json',
-      success: function (data) {
-        for (const e of data) {
-          $('section.places').append(`
-          <article>
-            <div class="title_box">
-              <h2>${e.name}</h2>
-              <div class="price_by_night">$${e.price_by_night}</div>
-            </div>
-            <div class="information">
-              <div class="max_guest">${e.max_guest} Guest${e.max_guest !== 1 ? 's' : ''}</div>
-              <div class="number_rooms">${e.number_rooms} Bedroom${e.number_rooms !== 1 ? 's' : ''}</div>
-              <div class="number_bathrooms">${e.number_bathrooms} Bathroom${e.number_bathrooms !== 1 ? 's' : ''}</div>
-            </div>
-            <div class="user">
-              <b>Owner:</b> 
-            </div>
-            <div class="description">
-	            ${e.description}
-            </div>
-          </article>`);
-        }
-      },
-      dataType: 'json'
-    });*/
-  });
 });

@@ -5,7 +5,7 @@ $(document).ready(function () {
   //*** catch a element when change status ***/
   $('.popover li input[type="checkbox"]').change(function () {
     let name = $(this).attr('data-name');
-    checkDictAmenities[`$name`] 
+    checkDictAmenities[`$name`]
     if ($(this).is(':checked')) {
       checkList.push(name);
       checkDictAmenities[$(this).data('id')] = $(this).data('name');
@@ -43,14 +43,6 @@ $(document).ready(function () {
   $('DIV#api_status').click(function() {
     reloadApi();
   });
-  /*** post filter boton witouht refresh page ***/
-
-  /*const sendDict = {
-    '':[],
-    '':[],
-    '': Object.keys(checkDictAmenities),
-  };*/
-
   $.post({
     type: 'POST',
     url: 'http://127.0.0.1:5001/api/v1/places_search/',
@@ -80,10 +72,6 @@ $(document).ready(function () {
     },
     dataType: 'json'
   }).always(reloadApi());
-
-
-
-
   $('button').click(function(){
     let ArrayIdAmenities = (Object.keys(checkDictAmenities).length === 0 ? [] : Object.keys(checkDictAmenities));
     console.log(ArrayIdAmenities);
@@ -118,7 +106,7 @@ $(document).ready(function () {
               <b>Owner:</b> ${e.userFname} ${e.userLname}
             </div>
             <div class="description">
-	            ${e.description}
+                    ${e.description}
             </div>
           </article>`);
         }
