@@ -3,9 +3,9 @@ $(document).ready(function () {
   const checkList = [];
   const checkDictAmenities = {};
   //*** catch a element when change status ***/
-  $('.popover li input[type="checkbox"]').change(function () {
+  $('.amenities .popover li input[type="checkbox"]').change(function () {
     let name = $(this).attr('data-name');
-    checkDictAmenities[`$name`]
+    /* checkDictAmenities[`$name`] */
     if ($(this).is(':checked')) {
       checkList.push(name);
       checkDictAmenities[$(this).data('id')] = $(this).data('name');
@@ -20,6 +20,43 @@ $(document).ready(function () {
     $('.amenities h4').html(msg.length > 0 ? msg : '&nbsp;');
     console.log(Object.keys(checkDictAmenities))
   });
+  
+  const checkDictStates = {};
+  //*** States catch a element when change status ***/
+  $('li#state input[type="checkbox"]').change(function () {
+    /* let nameS = $(this).attr('data-name'); */
+    /* checkDictStates[`$name`] */
+    if ($(this).is(':checked')) {
+      checkDictStates[$(this).data('id')] = $(this).data('name');
+    } else {
+      delete checkDictStates[$(this).data('id')];
+    }
+    let msg = (Object.values(checkDictStates)).join(', ');
+    if (msg.length > 28){
+      msg = msg.slice(0,28) + '...';
+    }
+    $('.locations h4').html(msg.length > 0 ? msg : '&nbsp;');
+    console.log(Object.keys(checkDictStates))
+  });
+
+  const checkDictCities = {};
+  //*** City catch a element when change status ***/
+  $('li#city input[type="checkbox"]').change(function () {
+    /* let nameS = $(this).attr('data-name'); */
+    /* checkDictStates[`$name`] */
+    if ($(this).is(':checked')) {
+      checkDictCities[$(this).data('id')] = $(this).data('name');
+    } else {
+      delete checkDictCities[$(this).data('id')];
+    }
+    let msg = (Object.values(checkDictCities)).join(', ');
+    if (msg.length > 28){
+      msg = msg.slice(0,28) + '...';
+    }
+    $('.locations h4').html(msg.length > 0 ? msg : '&nbsp;');
+    console.log(Object.keys(checkDictCities))
+  });
+
 
   const reloadApi = function () {
     /*** Request to API ***/
@@ -43,6 +80,14 @@ $(document).ready(function () {
   $('DIV#api_status').click(function() {
     reloadApi();
   });
+  /*** post filter boton witouht refresh page ***/
+
+  /*const sendDict = {
+    '':[],
+    '':[],
+    '': Object.keys(checkDictAmenities),
+  };*/
+
   $.post({
     type: 'POST',
     url: 'http://127.0.0.1:5001/api/v1/places_search/',
@@ -72,17 +117,23 @@ $(document).ready(function () {
     },
     dataType: 'json'
   }).always(reloadApi());
+
+
+
+
   $('button').click(function(){
     let ArrayIdAmenities = (Object.keys(checkDictAmenities).length === 0 ? [] : Object.keys(checkDictAmenities));
-    console.log(ArrayIdAmenities);
+    let ArrayIdStates = (Object.keys(checkDictStates).length === 0 ? [] : Object.keys(checkDictStates));
+    let ArrayIdCities = (Object.keys(checkDictCities).length === 0 ? [] : Object.keys(checkDictCities));
+    console.log(ArrayIdStates);
     reloadApi();
     $.ajax({
       type: 'POST',
       url: 'http://127.0.0.1:5001/api/v1/places_search/',
       data: JSON.stringify(
         {
-          "states": [],
-          "cities": [],
+          "states": ArrayIdStates,
+          "cities": ArrayIdCities,
           "amenities": ArrayIdAmenities
         }
       ),
@@ -106,7 +157,7 @@ $(document).ready(function () {
               <b>Owner:</b> ${e.userFname} ${e.userLname}
             </div>
             <div class="description">
-                    ${e.description}
+	            ${e.description}
             </div>
           </article>`);
         }

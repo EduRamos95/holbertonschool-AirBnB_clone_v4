@@ -97,9 +97,18 @@ button:hover {
 }
 
 .popover ul h2{
+    display: inline;
+    position: relative;
+    left: -6px;
     margin-top: 1.5%;
     margin-bottom: 5%;
     margin-left: 0px;
+}
+
+.popover ul input{
+    display: inline;
+    position: relative;
+    left: -10px;
 }
 
 .amenities:hover .popover,
