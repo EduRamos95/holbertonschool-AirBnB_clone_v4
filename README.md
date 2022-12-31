@@ -159,6 +159,7 @@ Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://tw
 Jhoan Zamora - [Github](https://github.com/jzamora5) / [Twitter](https://twitter.com/JhoanZamora10)  
 David Ovalle - [Github](https://github.com/Nukemenonai) / [Twitter](https://twitter.com/disartDave)
 Edu Ramos - [Github](https://github.com/EduRamos95)
+Carlos Cantoral - [Github](https://github.com/carloscm2022) / [Twitter](https://twitter.com/CarlosCantoral9)
 
 Second part of Airbnb: Joann Vuong
 ## License
